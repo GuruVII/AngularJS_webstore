@@ -4,5 +4,8 @@
 # node_modules
 /node_modules/*
 
+# not copying assests
+/dist/assest/*
+
 # files with squigly lines in the end
 *.*~
