@@ -1,0 +1,60 @@
+<html lang="eng">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    
+    <title>Template</title>
+    
+    <link rel="shortcut icon" href="">
+
+	<link rel="stylesheet" href="assets/css/bootstrap.min.css" >
+	<link rel="stylesheet" href="assets/css/bootstrap-theme.min.css" >
+	<link rel="stylesheet" href="css/style.css">
+ 	<style>body{padding-top:50px;}.starter-template{padding:40px 15px;text-align:center;}</style>
+ 	<script src="assets/js/jquery.min.js"></script>
+ 	<script src="assets/js/angular.min.js"></script>
+ 	<script src="assets/js/bootstrap.min.js"></script>
+	<script src="js/app.js"></script>
+	<script src="assets/js/angular-ui-router.js"></script>
+	<script src="js/all.js"></script>
+	<script src="js/modules.js"></script>
+	<script src="js/directives.js"></script>
+
+
+	
+
+	</head>
+
+    
+     <div class="well">
+                <!-- Navbar -->
+                <a ui-sref="home">Home</a>
+                <a ui-sref="login">Login</a>
+                <a ui-sref="error">Error</a>
+                <a ui-sref="parent">Parent</a>
+
+                <!-- Linking to nested state -->
+                <a ui-sref="parent.child">Nested state</a>
+
+                <!-- Linking to a state with added parameters -->
+                <a ui-sref="parameter({name: 'Bob'})">Go to state and pass Bob</a>
+            </div>
+
+
+            <!-- Load all templates and templateUrls from states into this directive -->
+            <div class="well">
+                <ui-view></ui-view>
+</div>
+    
+    
+    
+    
+<body ng-app="app">
+<div ng-controller="ControllerName">
+{{test}}
+
+           
+
+</body>

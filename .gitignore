@@ -1,0 +1,8 @@
+# bower components
+/bower_components/*
+
+# node_modules
+/node_modules/*
+
+# files with squigly lines in the end
+*.*~
