@@ -62,6 +62,13 @@ gulp.src(["!./src/index.html", "./src/**/*.html"])
 .pipe(gulp.dest("./dist/templates"))
 .pipe(notify("moved templates"));
 
+//Set the source. You can exclude files with !
+gulp.src(["./src/index.html"])
+//remove any reative golder, subfolders
+.pipe(flatten())
+.pipe(gulp.dest("./dist"))
+.pipe(notify("moved index"));
+
 });
 
 gulp.task("serve", function(){
