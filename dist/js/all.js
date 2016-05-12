@@ -1,3 +1,7 @@
+angular.module("app").factory("ExampleResource", function($resource) {
+    return $resource("http://www.example.com/api/examples/:id");
+});
+
 app.config(function($stateProvider, $urlRouterProvider){
 
     //  If a user goes to an url that doesn't have a valid state assigned

@@ -1,5 +1,6 @@
-angular
+var app = angular
 	.module('app', [
-			'ui.router'
+			'ui.router',
+			'ngResource'
 	]);
 

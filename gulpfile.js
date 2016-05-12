@@ -13,6 +13,12 @@ gulp.src(['!src/app.js','src/**/*.js'])
 	.pipe(concat('all.js'))
 	.pipe(gulp.dest('dist/js'))
 	.pipe(notify('Javascript dela'));
+
+gulp.src(['src/app.js'])
+	.pipe(gulp.dest('dist/js'))
+	.pipe(notify('prenešen app.js'));
+
+
 });
 
 gulp.task('moveBower',function(){
@@ -52,6 +58,10 @@ gulp.src(['bower_components/**/*.ttf', 'bower_components/**/*.woff'])
 	.pipe(gulp.dest('dist/assets/fonts'))
 	.pipe(notify('Moved bower fonts components to dist/assets/fonts'));
 
+gulp.src(['bower_components/angular-resource/angular-resource.min.js','angular-resource.min.js.map'])
+	.pipe(flatten())
+	.pipe(gulp.dest('dist/assets/js'))
+	.pipe(notify('Moved bower fonts components to dist/assets/js'));
 });
 
 gulp.task('move', function () {
