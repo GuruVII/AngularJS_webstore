@@ -9,10 +9,17 @@ var webserver = require("gulp-webserver");
 gulp.task('scripts', function () {
 
 	//JS which will run
-gulp.src(['!src/app.js','src/**/*.js'])
+
+gulp.src(['!src/app.js','src/**/*Factory.js'])
 	.pipe(concat('all.js'))
 	.pipe(gulp.dest('dist/js'))
 	.pipe(notify('Javascript dela'));
+
+gulp.src(['!src/app.js','!src/**/*Factory.js','src/**/*.js'])
+	.pipe(concat('all.js'))
+	.pipe(gulp.dest('dist/js'))
+	.pipe(notify('Javascript dela'));
+
 
 gulp.src(['src/app.js'])
 	.pipe(gulp.dest('dist/js'))
@@ -78,6 +85,15 @@ gulp.src(["./src/index.html"])
 .pipe(flatten())
 .pipe(gulp.dest("./dist"))
 .pipe(notify("moved index"));
+
+
+//Set the source. You can exclude files with !
+gulp.src(["./src/**/*.css"])
+//remove any reative golder, subfolders
+.pipe(concat('style.css'))
+.pipe(flatten())
+.pipe(gulp.dest("./dist/css"))
+.pipe(notify("moved css"));
 
 });
 

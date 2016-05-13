@@ -1,4 +1,4 @@
-app.controller("ControllerName", function($scope){
+app.controller("categoriesController", function($scope){
 
 $scope.test = "potato"
 
