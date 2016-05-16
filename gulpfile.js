@@ -10,12 +10,9 @@ gulp.task('scripts', function () {
 
 	//JS which will run
 
-gulp.src(['!src/app.js','src/**/*Factory.js'])
-	.pipe(concat('all.js'))
-	.pipe(gulp.dest('dist/js'))
-	.pipe(notify('Javascript dela'));
 
-gulp.src(['!src/app.js','!src/**/*Factory.js','src/**/*.js'])
+
+gulp.src(['!src/app.js','src/**/*.js'])
 	.pipe(concat('all.js'))
 	.pipe(gulp.dest('dist/js'))
 	.pipe(notify('Javascript dela'));

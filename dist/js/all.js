@@ -1,34 +1,19 @@
-app.factory('categoryFactory', function ($http, $q) {
-    return {
-        categories: function () {
-            var deferred = $q.defer();
-            $http({ method: "get", url: "http://smartninja.betoo.si/api/eshop/categories" })
-                .success(function (data, status, headers, config) {
-                    deferred.resolve(data);
-
-                }).error(function (data, status, headers, config) {
-                    deferred.reject(status);
-                });
-            return deferred.promise;
-        }
-    }
-});
-
 app.controller('navbarController', ['$scope', 'categoryFactory', function ($scope, data) {
     data.categories().then(function(success){
 
     });    
-    $scope.get = function () {
-            $scope.categories = categoryFactory.categories(); 
+    $scope.getNavbar = function () {
+            $scope.categories = data.categories(); 
             $scope.categories.then(function (items) {
                 $scope.items = items;
     console.log(items);
             }, function (status) {
-                console.log(status);
             });
         };
-        $scope.get();
+        $scope.getNavbar();
 }]);
+
+
 
 
 
@@ -46,10 +31,14 @@ app.config(function($stateProvider, $urlRouterProvider){
 		template: '<h1>Homepage</h1>'
 	});
 
-	$stateProvider.state('login',
-	{
-		url: '/login',
-		template: '<h1>Login</h1>'
+	$stateProvider.state('category', {
+    abstract: true,
+    url: "/:id",
+    views: {
+        "main": {
+            template: "<h1>TEST SDASD ASDAS DAS DAS </h1>"
+        }
+    }
 	});
 
 	$stateProvider.state('error',
@@ -97,4 +86,52 @@ $scope.test = "potato"
     
 
 
+});
+
+app.factory('categoryFactory', function ($http, $q) {
+    return {
+        categories: function () {
+            var deferred = $q.defer();
+            $http({ method: "get", url: "http://smartninja.betoo.si/api/eshop/categories" })
+                .success(function (data, status, headers, config) {
+                    deferred.resolve(data);
+
+                }).error(function (data, status, headers, config) {
+                    deferred.reject(status);
+                });
+            return deferred.promise;
+        }
+    }
+});
+app.controller('productController', ['$scope', 'productFactory', function ($scope, data) {
+    data.products().then(function(success){
+
+    });    
+    $scope.getProduct = function () {
+            $scope.products = data.products(); 
+            $scope.products.then(function (items) {
+                $scope.products = items;
+    console.log(items);
+            }, function (status) {
+                console.log(status);
+            });
+        };
+        $scope.getProduct();
+}]);
+
+app.factory('productFactory', function ($http, $q) {
+    return {
+        products: function () {
+            var deferred = $q.defer();
+            $http({ method: "get", url: "http://smartninja.betoo.si/api/eshop/products" })
+                .success(function (products, status, headers, config) {
+                    deferred.resolve(products);
+                    console.log(products);
+
+                }).error(function (products, status, headers, config) {
+                    deferred.reject(status);
+                });
+            return deferred.promise;
+        }
+    }
 });

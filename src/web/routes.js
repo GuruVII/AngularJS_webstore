@@ -9,10 +9,14 @@ app.config(function($stateProvider, $urlRouterProvider){
 		template: '<h1>Homepage</h1>'
 	});
 
-	$stateProvider.state('login',
-	{
-		url: '/login',
-		template: '<h1>Login</h1>'
+	$stateProvider.state('category', {
+    abstract: true,
+    url: "/:id",
+    views: {
+        "main": {
+            template: "<h1>TEST SDASD ASDAS DAS DAS </h1>"
+        }
+    }
 	});
 
 	$stateProvider.state('error',
