@@ -9,16 +9,6 @@ app.config(function($stateProvider, $urlRouterProvider){
 		template: '<h1>Homepage</h1>'
 	});
 
-	$stateProvider.state('category', {
-    abstract: true,
-    url: "/:id",
-    views: {
-        "main": {
-            template: "<h1>TEST SDASD ASDAS DAS DAS </h1>"
-        }
-    }
-	});
-
 	$stateProvider.state('error',
 	{
 		url: '/error',
@@ -37,12 +27,14 @@ app.config(function($stateProvider, $urlRouterProvider){
 		template: '<div class="well"><h4>Child state</h4></div>'
 	})
 
-	$stateProvider.state('parameter', {
-		url: '/parameter/:name',
+	$stateProvider.state('category', {
+		url: '/category/:id',
 		template: '<h1>Parameter state with a name parameter</h1><p>Name is : {{ name }}</p>',
 		controller: function($scope, $stateParams, $state){
             //  Use $stateParams to get url parameters
-            $scope.name = $stateParams.name;
+            $scope.id = $stateParams.id;
+
+
 
             //  If you want to redirect to a state
             //  $state.go('login');
