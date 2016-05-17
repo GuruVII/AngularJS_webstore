@@ -34,6 +34,18 @@ app.config(function($stateProvider, $urlRouterProvider){
 			$scope.product = productFactory.get ({id:stateParams.id});
             //  Use $stateParams to get url parameters
             $scope.id = $stateParams.id;
+
+
+
+            //  If you want to redirect to a state
+            //  $state.go('login');
+
+            //  If you want to reload a state
+			//  $state.reload();
+
+            //  Check if the current active state is...
+            // $state.is('login');
+		}
 	});
 
 });
