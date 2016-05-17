@@ -36,13 +36,11 @@
                 <a ui-sref="category({ id: category.id })" ng-repeat="category in items">{{category.category}} </a>
 
             </div>
-<div ng-controller="categoriesController">
-{{test}}
 </div>
+
 <div ng-controller="productController">
 <div class="col-md-4" ng-repeat="product in products">
     {{product.name}}
 </div>
-
-</div>
+<ui-view></ui-view>
 </body>

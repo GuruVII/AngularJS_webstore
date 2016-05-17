@@ -52,21 +52,10 @@ app.config(function($stateProvider, $urlRouterProvider){
 	$stateProvider.state('category', {
 		url: '/category/:id',
 		template: '<h1>Parameter state with a name parameter</h1><p>Name is : {{ name }}</p>',
-		controller: function($scope, $stateParams, $state){
+		controller: function($scope, $stateParams, $state, productFactory){
+			$scope.product = productFactory.get ({id:stateParams.id});
             //  Use $stateParams to get url parameters
             $scope.id = $stateParams.id;
-
-
-
-            //  If you want to redirect to a state
-            //  $state.go('login');
-
-            //  If you want to reload a state
-			//  $state.reload();
-
-            //  Check if the current active state is...
-            // $state.is('login');
-		}
 	});
 
 });
@@ -96,22 +85,13 @@ app.factory('categoryFactory', function ($http, $q) {
     }
 });
 app.controller('productController', ['$scope', 'productFactory', function ($scope, data) {
-    data.products().then(function(success){
-
-    });    
+   
     $scope.getProduct = function () {
-            $scope.products = data.products(); 
-            $scope.products.then(function (items) {
-                $scope.products = items;
-    console.log(items);
-            }, function (status) {
-                console.log(status);
-            });
-        };
-        $scope.getProduct();
+            $scope.products = data.query({}); };
+           
 }]);
 
-app.factory('productFactory', function ($http, $q) {
+/*app.factory('productFactory', function ($http, $q) {
     return {
         products: function () {
             var deferred = $q.defer();
@@ -126,4 +106,12 @@ app.factory('productFactory', function ($http, $q) {
             return deferred.promise;
         }
     }
+});*/
+
+
+app.factory('productFactory', function($resource) {
+    return $resource("http://smartninja.betoo.si/api/eshop/categories/:id/products");
 });
+
+
+

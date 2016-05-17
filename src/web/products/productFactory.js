@@ -1,4 +1,4 @@
-app.factory('productFactory', function ($http, $q) {
+/*app.factory('productFactory', function ($http, $q) {
     return {
         products: function () {
             var deferred = $q.defer();
@@ -13,4 +13,12 @@ app.factory('productFactory', function ($http, $q) {
             return deferred.promise;
         }
     }
+});*/
+
+
+app.factory('productFactory', function($resource) {
+    return $resource("http://smartninja.betoo.si/api/eshop/categories/:id/products");
 });
+
+
+
