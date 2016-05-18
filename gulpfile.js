@@ -59,13 +59,37 @@ gulp.src(['bower_components/bootstrap/dist/js/bootstrap.min.js','bower_component
 
 gulp.src(['bower_components/**/*.ttf', 'bower_components/**/*.woff'])
 	.pipe(flatten())
-	.pipe(gulp.dest('dist/assets/fonts'))
+	.pipe(gulp.dest('dist/assets/css/fonts'))
 	.pipe(notify('Moved bower fonts components to dist/assets/fonts'));
 
 gulp.src(['bower_components/angular-resource/angular-resource.min.js','angular-resource.min.js.map'])
 	.pipe(flatten())
 	.pipe(gulp.dest('dist/assets/js'))
 	.pipe(notify('Moved bower fonts components to dist/assets/js'));
+
+
+gulp.src(['bower_components/angular-bootstrap/ui-bootstrap-csp.css'])
+	.pipe(flatten())
+	.pipe(gulp.dest('dist/assets/css'))
+	.pipe(notify('Moved angular-boostrap components to dist/assets/css'));
+
+
+gulp.src(['bower_components/angular-bootstrap/ui-bootstrap.min.js', 'bower_components/angular-bootstrap/ui-bootstrap-tpls.min.js'])
+	.pipe(flatten())
+	.pipe(gulp.dest('dist/assets/js'))
+	.pipe(notify('Moved angular-boostrap components to dist/assets/js'));
+
+
+gulp.src(['bower_components/angular-animate/angular-animate.min.js'])
+	.pipe(flatten())
+	.pipe(gulp.dest('dist/assets/js'))
+	.pipe(notify('Moved angular animate components to dist/assets/js'));
+
+
+gulp.src(['bower_components/angular-touch/angular-touch.min.js'])
+	.pipe(flatten())
+	.pipe(gulp.dest('dist/assets/js'))
+	.pipe(notify('Moved angular touch to dist/assets/js'));
 });
 
 gulp.task('move', function () {

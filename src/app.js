@@ -1,7 +1,10 @@
 var app = angular
 	.module('app', [
 			'ui.router',
-			'ngResource'
+			'ngResource',
+			'ngAnimate',
+			'ngTouch',
+			'ui.bootstrap'
 	]);
 
 

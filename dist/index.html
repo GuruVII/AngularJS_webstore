@@ -9,15 +9,21 @@
     
     <link rel="shortcut icon" href="">
 
+    <link rel="stylesheet" href="css/style.css">
 	<link rel="stylesheet" href="assets/css/bootstrap.min.css" >
 	<link rel="stylesheet" href="assets/css/bootstrap-theme.min.css" >
-	<link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="assets/css/ui-bootstrap-csp.css" >
+
  	<style>body{padding-top:50px;}.starter-template{padding:40px 15px;text-align:center;}</style>
- 	<script src="assets/js/jquery.min.js"></script>
+ 	
  	<script src="assets/js/angular.min.js"></script>
- 	<script src="assets/js/bootstrap.min.js"></script>
+ 	
 	<script src="assets/js/angular-ui-router.min.js"></script>
 	<script src="assets/js/angular-resource.min.js"></script>
+    <script src="assets/js/angular-touch.min.js"></script>
+    <script src="assets/js/angular-animate.min.js"></script>
+    <script src="assets/js/angular-ui-bootstrap.min.js"></script>
+    <script src="assets/js/ui-bootstrap-tpls.min.js"></script>
 	<script src="js/app.js"></script>
 	<script src="js/all.js"></script>
 
@@ -32,15 +38,33 @@
 <body ng-app="app">
             <div class="well" ng-controller="navbarController">
                 <!-- Navbar -->
-                <a ui-sref="home">Home</a>
-                <a ui-sref="category({ id: category.id })" ng-repeat="category in items">{{category.category}} </a>
+                <div class="container">
+                        
+                            <a ui-sref="home">
+                                <button class="  button-navbar btn">
+                                    Home
+                                </button>
+                            </a>
+                       
+                        
+                            <a ui-sref="category({ id: category.id })" ng-repeat="category in items">
+                                
+                                    <button class="button-navbar btn">
+                                        {{category.category}} 
+                                    </button>
+                                
+                            </a>
+
+                </div>
+
+
 
             </div>
 </div>
-
-<div ng-controller="productController">
-<div class="col-md-4" ng-repeat="product in products">
-    {{product.name}}
+<div class="container" ng-controller="productController">
+    <div class="col-md-4" ng-repeat="product in products">
+        {{product.name}}
+    </div>
+    <ui-view></ui-view>
 </div>
-<ui-view></ui-view>
 </body>
