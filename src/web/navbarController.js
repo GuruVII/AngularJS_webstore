@@ -10,7 +10,7 @@ app.controller('navbarController', ['$scope', 'categoryFactory', function ($scop
             }, function (status) {
             });
         };
-        $scope.getNavbar();
+    $scope.getNavbar();
 }]);
 
 

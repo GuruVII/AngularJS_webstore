@@ -124,7 +124,7 @@ gulp.src(".")
 .pipe(webserver({
 port: 48081,
 livereload: true,
-open: "http://localhost:48081/dist/"
+open: "http://localhost:48081/dist/index.html#/"
 }));
 
 });

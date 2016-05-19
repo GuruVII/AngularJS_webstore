@@ -29,7 +29,7 @@ app.config(function($stateProvider, $urlRouterProvider){
 
 	$stateProvider.state('category', {
 		url: '/category/:id',
-		template: '<h1>Parameter state with a name parameter</h1><p>Name is : {{ id }}</p>',
+		templateUrl: "templates/product.html",
 		controller: function($scope, $stateParams, $state, productFactory){
 			$scope.product = productFactory.query ({id:$stateParams.id})
 			console.log($stateParams.id);
