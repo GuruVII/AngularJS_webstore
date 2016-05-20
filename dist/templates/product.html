@@ -1,7 +1,8 @@
 <div class="row  row-eq-height">
 	<div class="col-sm-2 col-sm-offset-1 product-border margin-bottom-10px" ng-repeat="item in product">
+		<a ui-sref="product({ id: item.id })">
 		<div class="col-xs-12">
-			<img class="img-responsive margin-top-5px" ng-src="{{item.image}}">
+			<img class="img-responsive product-img margin-top-5px" ng-src="{{item.image}}">
 		</div>
 		<div class="col-xs-12">
 			<p>{{item.name}}</p>
@@ -12,5 +13,6 @@
 		<div class="col-xs-3 col-sm-offset-7">
 			<button class="btn button-details">Details</button>
 		</div>
+		</a>
 </div>
 </div>

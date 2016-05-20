@@ -50,4 +50,15 @@ app.config(function($stateProvider, $urlRouterProvider){
 		}
 	});
 
+		$stateProvider.state('product', {
+		url: '/product/:id',
+		templateUrl: "templates/productdetails.html",
+		controller: function($scope, $stateParams, $state, productDetailsFactory){
+			$scope.productDetails = productDetailsFactory.get ({id:$stateParams.id})
+			console.log($stateParams.id);
+			console.log($scope.productdetails);
+            $scope.id = $stateParams.id;
+		}
+	});
+
 });

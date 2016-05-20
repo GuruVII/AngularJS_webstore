@@ -72,6 +72,17 @@ app.config(function($stateProvider, $urlRouterProvider){
 		}
 	});
 
+		$stateProvider.state('product', {
+		url: '/product/:id',
+		templateUrl: "templates/productdetails.html",
+		controller: function($scope, $stateParams, $state, productDetailsFactory){
+			$scope.productDetails = productDetailsFactory.get ({id:$stateParams.id})
+			console.log($stateParams.id);
+			console.log($scope.productdetails);
+            $scope.id = $stateParams.id;
+		}
+	});
+
 });
 
 app.controller("categoriesController", function($scope){
@@ -133,3 +144,18 @@ app.factory('productFactory', function($resource) {
 
 
 
+
+app.controller('productDetailsController', ['$scope', 'productDetailsFactory', function ($scope, data) {
+   
+    $scope.getItem = function () {
+            $scope.item = data.query({});
+
+        };
+    $scope.getItem();
+           
+
+}]);
+
+app.factory('productDetailsFactory', function($resource) {
+    return $resource("http://smartninja.betoo.si/api/eshop/products/:id");
+});

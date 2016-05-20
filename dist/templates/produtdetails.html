@@ -1,0 +1,42 @@
+<div class="row">
+		<div class="col-xs-12">
+			<h2>{{item.name}}</h2>
+		</div>
+		<div class="col-xs-12">
+			<img class="img-responsive product-img margin-top-5px" ng-src="{{item.image}}">
+		</div>
+
+		<div class="col-xs-12">
+			<h3>{{item.tagline}}</h3>
+		</div>
+		<div class="col-xs-12">
+			<label>Brand:</label><p>{{item.brand}}</p>
+		</div>
+		<div class="col-xs-12">
+			<label>Colour:</label><p>{{item.color}}</p>
+		</div>
+		<div class="col-xs-8">
+			<label>Description:</label><p>{{item.description}}</p>
+		</div>
+		<div class="col-xs-6">
+			<b ng-if="item.availableOn != null">{{item.availableOn}}</b>
+		</div>
+		<div class="col-xs-6">
+			<label>Price:</label><b>{{item.price | currency : "€" : 2}}</b>
+		</div>
+</div>
+</div>
+
+
+        id: 1,
+        categoryId: 3,
+        name: "Monty",
+        color: "aqua",
+        tagline: "Accusamus nihil repellat vero omnis voluptates id amet et et.",
+        description: "Recusandae totam nulla quam ipsam voluptatem. Sed natus debitis voluptas aut laudantium sit. Esse perspiciatis dignissimos error et itaque quibusdam tempora velit. Ut velit soluta explicabo eligendi occaecati debitis et. Eum sint dolorem delectus enim ipsum inventore sed. Et velit qui suscipit a deserunt laudantium. Enim nostrum soluta qui ipsam non ipsum velit.",
+        brand: "Barton, Flatley and Muller",
+        price: 49.99,
+        stock: 2,
+        image: "http://lorempixel.com/300/300/people/1",
+        onSale: false,
+        availableOn: null
