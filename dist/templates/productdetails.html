@@ -1,32 +1,32 @@
 <div class="row" ng-controller="productDetailsController">
 		<div class="col-xs-12">
-			<h2>{{productDetails.name}}</h2>
+			<h2>{{item.name}}</h2>
 		</div>
 		<div class="col-xs-12">
-			<img class="img-responsive product-img margin-top-5px" ng-src="{{productDetails.image}}">
+			<img class="img-responsive product-img margin-top-5px" ng-src="{{item.image}}">
 		</div>
 
 		<div class="col-xs-12">
-			<h3>{{productDetails.tagline}}</h3>
+			<h3>{{item.tagline}}</h3>
 		</div>
 		<div class="col-xs-12">
-			<label>Brand: </label><p>{{productDetails.brand}}</p>
+			<label>Brand: </label><p>{{item.brand}}</p>
 		</div>
 		<div class="col-xs-12">
-			<label>Colour: </label><p>{{productDetails.color}}</p>
+			<label>Colour: </label><p>{{item.color}}</p>
 		</div>
 		<div class="col-xs-8">
-			<label>Description: </label><p>{{productDetails.description}}</p>
+			<label>Description: </label><p>{{item.description}}</p>
 		</div>
 		<div class="col-xs-8">
-			<label>In stock: </label><p ng-if="productDetails.stock > 0" class="green-letters">YES</p>
-									 <p ng-if="productDetails.stock == 0" class="red-letters">NO</p><p>Avilable on {{productDetails.availableOn}}</p>
+			<label>In stock: </label><p ng-if="item.stock > 0" class="green-letters">YES</p>
+									 <p ng-if="item.stock == 0" class="red-letters">NO</p><p>Avilable on {{item.availableOn}}</p>
 		</div>
 		<div class="col-xs-6">
 			
 		</div>
 		<div class="col-xs-6">
-			<label>Price: </label><b>{{productDetails.price | currency : "€" : 2}}</b>
+			<label>Price: </label><b>{{item.price | currency : "€" : 2}}</b>
 		</div>
 </div>
 </div>

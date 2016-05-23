@@ -4,7 +4,7 @@ app.controller('productController', ['$scope', 'productFactory', function ($scop
             $scope.products = data.query({});
 
         };
-    
+    $scope.getProduct();
            
 
 }]);
