@@ -1,10 +1,12 @@
-app.controller('productController', ['$scope', 'productFactory', function ($scope, data) {
+app.controller('productController', ['$scope', 'productFactory', function ($stateParama, $scope, $state, productFactory) {
    
-    $scope.getProduct = function () {
-            $scope.products = data.query({});
 
-        };
-    $scope.getProduct();
+
+   			$scope.product = productFactory.query ({id:$stateParams.id})
+			console.log($stateParams.id);
+			console.log($scope.product);
+            $scope.id = $stateParams.id;
+
            
 
 }]);

@@ -1,5 +1,5 @@
-<div class="row  row-eq-height">
-	<div class="col-sm-2 col-sm-offset-1 product-border margin-bottom-10px" ng-repeat="item in products">
+<div class="row  row-eq-height" ng-controller="productController">
+	<div class="col-sm-2 col-sm-offset-1 product-border margin-bottom-10px" ng-repeat="item in product">
 		<a ui-sref="product({ id: item.id })">
 		<div class="col-xs-12">
 			<img class="img-responsive product-img margin-top-5px" ng-src="{{item.image}}">

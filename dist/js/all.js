@@ -52,24 +52,7 @@ app.config(function($stateProvider, $urlRouterProvider){
 	$stateProvider.state('category', {
 		url: '/category/:id',
 		templateUrl: "templates/product.html",
-		controller: function($scope, $stateParams, $state, productFactory){
-			$scope.product = productFactory.query ({id:$stateParams.id})
-			console.log($stateParams.id);
-			console.log($scope.product);
-            //  Use $stateParams to get url parameters
-            $scope.id = $stateParams.id;
-
-
-
-            //  If you want to redirect to a state
-            //  $state.go('login');
-
-            //  If you want to reload a state
-			//  $state.reload();
-
-            //  Check if the current active state is...
-            // $state.is('login');
-		}
+		controller: "productController"
 	});
 
 		$stateProvider.state('product', {
@@ -109,13 +92,15 @@ app.factory('categoryFactory', function ($http, $q) {
         }
     }
 });
-app.controller('productController', ['$scope', 'productFactory', function ($scope, data) {
+app.controller('productController', ['$scope', 'productFactory', function ($stateParama, $scope, $state, productFactory) {
    
-    $scope.getProduct = function () {
-            $scope.products = data.query({});
 
-        };
-    $scope.getProduct();
+
+   			$scope.product = productFactory.query ({id:$stateParams.id})
+			console.log($stateParams.id);
+			console.log($scope.product);
+            $scope.id = $stateParams.id;
+
            
 
 }]);
