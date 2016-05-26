@@ -92,7 +92,11 @@ app.factory('categoryFactory', function ($http, $q) {
         }
     }
 });
-app.controller('productController', ['$scope', 'productFactory', function ($scope, $stateParams, $state, productFactory){
+app.controller('carouselController', ["$scope", "carouselFactory", function($scope, carouselFactory){
+
+        }]);
+
+app.controller('productController',  ['$scope', '$stateParams', '$state', 'productFactory', function ($scope, $stateParams, $state, productFactory){
    
 
 
@@ -105,24 +109,6 @@ app.controller('productController', ['$scope', 'productFactory', function ($scop
 
 }]);
 
-/*app.factory('productFactory', function ($http, $q) {
-    return {
-        products: function () {
-            var deferred = $q.defer();
-            $http({ method: "get", url: "http://smartninja.betoo.si/api/eshop/products" })
-                .success(function (products, status, headers, config) {
-                    deferred.resolve(products);
-                    console.log(products);
-
-                }).error(function (products, status, headers, config) {
-                    deferred.reject(status);
-                });
-            return deferred.promise;
-        }
-    }
-});*/
-
-
 app.factory('productFactory', function($resource) {
     return $resource("http://smartninja.betoo.si/api/eshop/categories/:id/products");
 });
@@ -130,16 +116,13 @@ app.factory('productFactory', function($resource) {
 
 
 
-app.controller('productDetailsController', ['$scope', 'productDetailsFactory', function ($scope, data) {
-   console.log("data: "+data);
-    $scope.getItem = function () {
-            $scope.item = data.get({});
+app.controller('productDetailsController', ['$scope', '$stateParams', '$state', 'productDetailsFactory', function($scope, $stateParams, $state, productDetailsFactory){
+			$scope.item = productDetailsFactory.get ({id:$stateParams.id})
+			console.log($stateParams.id);
+			console.log($scope.productdetails);
+            $scope.id = $stateParams.id;
 
-        };
-    $scope.getItem();
-           
-
-}]);
+        }]);
 
 app.factory('productDetailsFactory', function($resource) {
     return $resource("http://smartninja.betoo.si/api/eshop/products/:id");

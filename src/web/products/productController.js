@@ -1,4 +1,4 @@
-app.controller('productController', ['$scope', 'productFactory', function ($scope, $stateParams, $state, productFactory){
+app.controller('productController',  ['$scope', '$stateParams', '$state', 'productFactory', function ($scope, $stateParams, $state, productFactory){
    
 
 
