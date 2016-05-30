@@ -6,8 +6,9 @@ app.controller('navbarController', ['$scope', 'categoryFactory', function ($scop
             $scope.categories = data.categories(); 
             $scope.categories.then(function (items) {
                 $scope.items = items;
-    console.log(items);
-            }, function (status) {
+    
+            }, 
+            function (status) {
             });
         };
     $scope.getNavbar();
@@ -28,7 +29,7 @@ app.config(function($stateProvider, $urlRouterProvider){
 	$stateProvider.state('home',
 	{
 		url: '/',
-		template: '<h1>Homepage</h1>'
+		templateUrl: "templates/home.html",
 	});
 
 	$stateProvider.state('error',
@@ -58,19 +59,14 @@ app.config(function($stateProvider, $urlRouterProvider){
 		$stateProvider.state('product', {
 		url: '/product/:id',
 		templateUrl: "templates/productdetails.html",
-		controller: function($scope, $stateParams, $state, productDetailsFactory){
-			$scope.productDetails = productDetailsFactory.get ({id:$stateParams.id})
-			console.log($stateParams.id);
-			console.log($scope.productdetails);
-            $scope.id = $stateParams.id;
-		}
+		controller: 'productDetailsController'
 	});
 
 });
 
 app.controller("categoriesController", function($scope){
 
-$scope.test = "potato"
+
 
     
 
@@ -94,19 +90,32 @@ app.factory('categoryFactory', function ($http, $q) {
 });
 app.controller('carouselController', ["$scope", "carouselFactory", function($scope, carouselFactory){
 
+ $scope.interval = 3000;
+  $scope.noWrapSlides = false;
+  $scope.activeSlide = 0;
+  $scope.slides = carouselFactory.query();
+	
+/*	$scope.slides.forEach(function (currentValue){
+		if ((currentValue.id % 4) == 0 
+		){
+		$scope.selectedSlides.push(currentValue)}
+	});
+*/
+	
+
+
+
         }]);
+app.factory('carouselFactory', function($resource) {
+    return $resource("http://smartninja.betoo.si/api/eshop/products");
+});
+
 
 app.controller('productController',  ['$scope', '$stateParams', '$state', 'productFactory', function ($scope, $stateParams, $state, productFactory){
-   
-
-
-   			$scope.product = productFactory.query ({id:$stateParams.id})
+      		$scope.product = productFactory.query ({id:$stateParams.id})
 			console.log($stateParams.id);
 			console.log($scope.product);
             $scope.id = $stateParams.id;
-
-           
-
 }]);
 
 app.factory('productFactory', function($resource) {
@@ -118,10 +127,7 @@ app.factory('productFactory', function($resource) {
 
 app.controller('productDetailsController', ['$scope', '$stateParams', '$state', 'productDetailsFactory', function($scope, $stateParams, $state, productDetailsFactory){
 			$scope.item = productDetailsFactory.get ({id:$stateParams.id})
-			console.log($stateParams.id);
-			console.log($scope.productdetails);
             $scope.id = $stateParams.id;
-
         }]);
 
 app.factory('productDetailsFactory', function($resource) {

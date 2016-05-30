@@ -3,8 +3,9 @@ var app = angular
 			'ui.router',
 			'ngResource',
 			'ngAnimate',
-			'ngTouch',
-			'ui.bootstrap'
+			'ui.bootstrap',
+			'ngTouch'
+
 	]);
 
 

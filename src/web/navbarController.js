@@ -6,8 +6,9 @@ app.controller('navbarController', ['$scope', 'categoryFactory', function ($scop
             $scope.categories = data.categories(); 
             $scope.categories.then(function (items) {
                 $scope.items = items;
-    console.log(items);
-            }, function (status) {
+    
+            }, 
+            function (status) {
             });
         };
     $scope.getNavbar();
