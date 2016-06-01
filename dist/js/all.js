@@ -5,7 +5,7 @@ app.controller('navbarController', ['$scope', 'categoryFactory', function ($scop
     $scope.getNavbar = function () {
             $scope.categories = data.categories(); 
             $scope.categories.then(function (items) {
-                $scope.items = items;
+            $scope.items = items;
     
             }, 
             function (status) {
@@ -93,30 +93,54 @@ app.controller('carouselController', ["$scope", "carouselFactory", function($sco
   $scope.interval = 3000;
   $scope.noWrapSlides = false;
   $scope.activeSlide = 0;
-  $scope.slides = carouselFactory.query();
+  $scope.selectedSlides = [];
+  //$scope.slides = carouselFactory.query();
+
+   carouselFactory.carousel().then(function(success){
+
+    }); 
+
+    $scope.getSlides = function () {
+        $scope.carousel = carouselFactory.carousel(); 
+        $scope.carousel.then(function (items) {
+	        $scope.slides = items;
+			$scope.slides.forEach(function (currentValue){
+				if (((currentValue.id%4) == 0) && (currentValue.onSale == true) ){
+					$scope.selectedSlides.push(currentValue);
+					console.log($scope.selectedSlides.length);
+				}
+			});
+	        		console.log("potato")
+		})
+    };
+    
+             
+        
+    $scope.getSlides();
+  //$scope.selectedSlides = [];
+  //$scope.slides = [{image:"http://lorempixel.com/300/300/people/1", name:"potato"}];
 
 //$scope.selectedSlides = [{image:"http://lorempixel.com/300/300/people/1", name:"potato"}]
 
-$scope.slides.forEach(function (currentValue){
-	console.log("potato")
-		//if ((currentValue.id % 4) == 0 
-		//){
-		//}
-		console.log(currentValue);
-		$scope.selectedSlides.push(currentValue);
-		console.log($scope.selectedSlides);
-	});
+}]);
 
 
 
- 
+app.factory('carouselFactory', function ($http, $q) {
+    return {
+        carousel: function () {
+            var deferred = $q.defer();
+            $http({ method: "get", url: "http://smartninja.betoo.si/api/eshop/products" })
+                .success(function (data, status, headers, config) {
+                    deferred.resolve(data);
 
-        }]);
-app.factory('carouselFactory', function($resource) {
-    return $resource("http://smartninja.betoo.si/api/eshop/products");
+                }).error(function (data, status, headers, config) {
+                    deferred.reject(status);
+                });
+            return deferred.promise;
+        }
+    }
 });
-
-
 app.controller('productController',  ['$scope', '$stateParams', '$state', 'productFactory', function ($scope, $stateParams, $state, productFactory){
       		$scope.product = productFactory.query ({id:$stateParams.id})
 			console.log($stateParams.id);
