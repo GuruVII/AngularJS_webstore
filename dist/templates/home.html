@@ -1,7 +1,7 @@
 <div class="row" ng-controller="carouselController">
 <uib-carousel interval="Interval" active="activeSlide">
                 <uib-slide ng-repeat="slide in selectedSlides"  index="$index">
-                    <img ng-src="{{slide.image}}" style="margin:auto;">
+                    <a ui-sref="product({ id: slide.id })"><img ng-src="{{slide.image}}" style="margin:auto;"></a>
                     <div class="carousel-caption">
                         <h4>{{slide.name}}</h4>
                     </div>
