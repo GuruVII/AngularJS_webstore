@@ -120,12 +120,13 @@ gulp.src(["./src/**/*.css"])
 
 gulp.task("serve", function(){
 gulp.src(".")
-//Start a webserver with livereload on localhost:48080
+
+//Start a webserver with livereload on localhost:48081
 .pipe(webserver({
 port: 48081,
 livereload: true,
 open: "http://localhost:48081/dist/index.html#/"
-}));
+})).pipe(notify("Running webserver!"));
 
 });
 

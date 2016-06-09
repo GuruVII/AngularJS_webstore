@@ -4,6 +4,7 @@
   "description": "",
   "main": "gulpfile.js",
   "dependencies": {
+    "gulp": "^3.9.1",
     "gulp-concat": "^2.6.0",
     "gulp-flatten": "^0.2.0",
     "gulp-notify": "^2.2.0",
